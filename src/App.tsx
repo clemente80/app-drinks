@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import GlobalStyle from "./Styles/gStyle";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import Principal from "./pages/Principal";
+import NossaCarta from "./pages/NossaCarta";
+import DrinkSemana from "./pages/DrinkSemana";
+import LinkError from "./pages/LinkError";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <GlobalStyle />
+      <Switch>
+        <Route path="/main" component={Principal} />
+        <Route path="/nossa_carta" component={NossaCarta} />
+        <Route path="/drink_semana" component={DrinkSemana} />
+        <Route path="*" component={LinkError} />
+      </Switch>
+    </Router>
   );
-}
-
+};
 export default App;

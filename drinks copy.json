@@ -1,0 +1,73 @@
+{
+  "drinks": [
+    {
+      "moscow_mule": {
+        "id": 1,
+        "drink_name": "Moscow Mule",
+        "price": 24,
+        "week-drink": false,
+        "ingredients": [
+          "vodka",
+          "hortelã",
+          "açúcar",
+          "gelo batido",
+          "limão",
+          "espuma de gengibre"
+        ],
+        "url_img": ""
+      },
+      "capirinha_limão": {
+        "id": 2,
+        "drink_name": "Caipirinha de Limão",
+        "price": 18,
+        "week-drink": false,
+        "ingredients": ["cachaça", "açúcar", "limão", "gelo"],
+        "url_img": ""
+      },
+      "white_russian": {
+        "id": 3,
+        "drink_name": "White Russian",
+        "price": 18,
+        "week-drink": false,
+        "ingredients": ["vodka", "licor de café", "creme de leite", "gelo"],
+        "url_img": ""
+      },
+      "gin_tonica": {
+        "id": 4,
+        "price": 20,
+        "week-drink": false,
+        "drink_name": "Gin Tônica",
+        "ingredients": ["gin", "agua tônica", "laranja", "gelo"],
+        "url_img": ""
+      },
+      "cosmopolitan": {
+        "id": 5,
+        "drink_name": "Cosmopolitan",
+        "price": 22,
+        "week-drink": false,
+        "ingredients": [
+          "vodka citron",
+          "cointreau",
+          "suco de limão",
+          "suco de cranberry"
+        ],
+        "url_img": ""
+      },
+      "mojito": {
+        "id": 6,
+        "drink_name": "Mojito",
+        "price": 24,
+        "week-drink": true,
+        "ingredients": [
+          "vodka",
+          "hortelã",
+          "açúcar",
+          "gelo batido",
+          "limão",
+          "espuma de gengibre"
+        ],
+        "url_img": ""
+      }
+    }
+  ]
+}

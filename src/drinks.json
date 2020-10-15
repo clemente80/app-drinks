@@ -1,0 +1,71 @@
+{
+  "drinks": [
+    {
+      "id": 1,
+      "drink_name": "Moscow Mule",
+      "price": 24,
+      "week-drink": false,
+      "ingredients": [
+        "vodka",
+        "hortelã",
+        "açúcar",
+        "gelo batido",
+        "limão",
+        "espuma de gengibre"
+      ],
+      "url_img": "https://cookinglsl.com/wp-content/uploads/2015/08/moscow-mule-edited-1-1.jpg"
+    },
+    {
+      "id": 2,
+      "drink_name": "Caipirinha de Limão",
+      "price": 18,
+      "week-drink": false,
+      "ingredients": ["cachaça", "açúcar", "limão", "gelo"],
+      "url_img": "https://i.ibb.co/nPCtYbm/sagatiba.jpg"
+    },
+    {
+      "id": 3,
+      "drink_name": "White Russian",
+      "price": 18,
+      "week-drink": false,
+      "ingredients": ["vodka", "licor de café", "creme de leite", "gelo"],
+      "url_img": "https://i.ibb.co/KFZBMMP/white-russian.jpg"
+    },
+    {
+      "id": 4,
+      "price": 20,
+      "week-drink": false,
+      "drink_name": "Gin Tônica",
+      "ingredients": ["gin", "agua tônica", "laranja", "gelo"],
+      "url_img": "https://i.ibb.co/wyDxhPj/gin-tonic.jpg"
+    },
+    {
+      "id": 5,
+      "drink_name": "Cosmopolitan",
+      "price": 22,
+      "week-drink": false,
+      "ingredients": [
+        "vodka citron",
+        "cointreau",
+        "suco de limão",
+        "suco de cranberry"
+      ],
+      "url_img": "http://dailyappetite.com/wp-content/uploads/2017/05/cosmo-1.jpg"
+    },
+    {
+      "id": 6,
+      "drink_name": "Mojito",
+      "price": 24,
+      "week-drink": true,
+      "ingredients": [
+        "vodka",
+        "hortelã",
+        "açúcar",
+        "gelo batido",
+        "limão",
+        "espuma de gengibre"
+      ],
+      "url_img": "https://foodwithfeeling.com/wp-content/uploads/2020/04/classic-mojito-5.jpg"
+    }
+  ]
+}
