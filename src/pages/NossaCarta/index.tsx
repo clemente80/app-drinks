@@ -4,24 +4,11 @@ import { TiArrowBack } from "react-icons/ti";
 import { FiTrash } from "react-icons/fi";
 import { HiOutlinePencil } from "react-icons/hi";
 import data from "../../drinks.json";
-import Modal from "../../components/modal";
 
 const drinkList = data.drinks;
 
 const useModal = () => {
   const [isShowing, setIsShowing] = useState(false);
-
-  function toggle() {
-    setIsShowing(!isShowing);
-  }
-
-  return {
-    isShowing,
-    toggle,
-  }
-};
-
-const {isShowing, toggle} = useModal();
 
 
 const NossaCartaPages: React.FC = () => {
