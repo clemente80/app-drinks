@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <Router>
       <GlobalStyle />
       <Switch>
-        <Route path="/main" component={Principal} />
+        <Route path="/main" exactly component={Principal} />
         <Route path="/nossa_carta" component={NossaCarta} />
         <Route path="/drink_semana" component={DrinkSemana} />
         <Route path="*" component={LinkError} />

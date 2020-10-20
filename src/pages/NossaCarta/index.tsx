@@ -1,50 +1,70 @@
-import React, { useState } from "react";
-import { Container, ModalTrash2 } from "./styles";
+import React, { useState } from 'react';
+import { Container, ModalTrash, ModalDetails } from './styles';
 
-import { TiArrowBack } from "react-icons/ti";
-import { FiTrash } from "react-icons/fi";
-import { HiOutlinePencil } from "react-icons/hi";
+import { TiArrowBack } from 'react-icons/ti';
+import { FiTrash } from 'react-icons/fi';
+import { HiOutlinePencil } from 'react-icons/hi';
 
-import data from "../../drinks.json";
+import data from '../../drinks.json';
 
 const drinkList = data.drinks;
 
 const NossaCartaPages: React.FC = () => {
 
-  const [modalDrink, setModalDrink] = useState(false);
+  const [modalDetails, setModalDetails] = useState(false);
+  const [modalTrash, setModalTrash] = useState(false);
 
   return (
     <Container>
-      <button className="__voltar">
+      <button className='__voltar'>
         <TiArrowBack />
         VOLTAR
       </button>
       <h1>NOSSA CARTA</h1>
 
-      <div className="showDrinks">
+      <div className='showDrinks'>
         {drinkList &&
           drinkList.map((drink) => (
             <div key={drink.id}>
-              <div className="__img">
-                <img src={drink.url_img} />
+              <div className='__img'>
+                <img title='Abrir' onClick={() => setModalDetails(true)} src={drink.url_img} />
               </div>
               <h4>{drink.drink_name}</h4>
-              <button onClick={() => setModalDrink(true)}><FiTrash className="__delete"/></button>
-              <button><HiOutlinePencil className="__update"/></button>
+              <button title='Deletar' onClick={() => setModalTrash(true)}><FiTrash className='__delete'/></button>
+              <button title='Editar'><HiOutlinePencil className='__update'/></button>
             </div>
           ))}
       </div>
-      {modalDrink &&
-       <ModalTrash2 className="teste">
+      {modalDetails &&
+       <ModalDetails onClick={() => setModalDetails(false)}>
+        <div className='__details' style={{backgroundImage: `url('https://cookinglsl.com/wp-content/uploads/2015/08/moscow-mule-edited-1-1.jpg')`}}>
+          <button className='__close' title='Fechar' onClick={() => setModalDetails(false)}>&times;</button>
+          <p className='__drinkName'>MOSCOW MULE</p>
+          <div className='__ingredients'>
+            <p>INGREDIENTES</p>
+            <ul>
+              <li>vodka</li>
+              <li>hortelã</li>
+              <li>açúcar</li>
+              <li>gelo batido</li>
+              <li>limão</li>
+              <li>espuma de gengibre</li>
+            </ul>
+          </div>
+        </div>
+       </ModalDetails>
+      }
+      {modalTrash &&
+       <ModalTrash onClick={() => setModalTrash(false)}>
         <div>
-          <button className="__close" onClick={() => setModalDrink(false)}>&times;</button>
+          <button className='__close' title='Fechar' onClick={() => setModalTrash(false)}>&times;</button>
           <p>Tem certeza que deseja apagar um elemento?</p>
           <ul>
             <li><button>Sim</button></li>
             <li><button>Não</button></li>
           </ul>
         </div>
-       </ModalTrash2>
+       </ModalTrash>
       }
 
     </Container>

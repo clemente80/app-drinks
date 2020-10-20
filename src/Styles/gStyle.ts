@@ -9,11 +9,11 @@ export default createGlobalStyle`
 
 @font-face {
     font-family: 'Roboto';
-    src:url('https://fonts.googleapis.com/css2?family=Roboto&display=swap') format('otf');
+    src:url("ttps://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap") format('otf');
 }
 
 * {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     outline: 0;
