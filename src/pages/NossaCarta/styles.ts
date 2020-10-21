@@ -14,6 +14,7 @@ export const Container = styled.div`
     font-size: 14px;
     cursor: pointer;
     transition: 0.1s ease-in-out;
+    z-index: 1;
 
     :hover svg {
       transform: translateX(-5px) rotate(-45deg) scale(1.3);
@@ -56,6 +57,10 @@ export const Container = styled.div`
       text-transform: uppercase;
       border-radius: 8px;
       transition: .4s ease-in-out;
+
+      @media screen and (max-width: 812px) {
+        margin: 80px 42px;
+      }
 
       :hover {
         transform: scale(0.95);
@@ -104,6 +109,7 @@ export const Container = styled.div`
         right: -60px;
         top: 40%;
         transform: translateY(-40%);
+        cursor: pointer;
 
         :hover {
           filter: invert(1);
@@ -115,6 +121,7 @@ export const Container = styled.div`
         right: -60px;
         top: 60%;
         transform: translateY(-60%);
+        cursor: pointer;
 
         :hover {
           filter: invert(1);
@@ -135,7 +142,14 @@ export const Container = styled.div`
       border-radius: 50%;
       top: 50%;
       transform: translateY(-50%);
-      right: -120%;
+      right: -90%;
+
+      @media screen and (max-width: 502px) {
+        right: 0;
+        left: 50%;
+        top: 150%;
+        transform: translateX(-50%);
+      }
 
       :hover {
         filter: invert(1);
@@ -153,11 +167,16 @@ export const Container = styled.div`
       position: absolute;
       width: 125px;
       height: 125px;
-      border: 2px solid;
-      border-radius: 50%;
       top: 50%;
       transform: translateY(-50%);
-      right: -120%;
+      right: -90%;
+
+      @media screen and (max-width: 502px) {
+        right: 0;
+        left: 50%;
+        top: 150%;
+        transform: translateX(-50%);
+      }
     }
   }
 `
@@ -171,6 +190,7 @@ bottom: 0%;
 background: linear-gradient(45deg, rgba(0,0,0,.75), rgba(256,256,256,.75));
 transform: translateY(0px);
 animation: moveToBottom .5s;
+z-index: 2;
 
 @keyframes moveToBottom {
   from {
@@ -185,8 +205,9 @@ animation: moveToBottom .5s;
 
 .__details {
   background-size: cover;
+  background-position: center;
   position: fixed;
-  display: flex;
+  display: relative;
   flex-direction: column;
   top: 10%;
   left: 25%;
@@ -195,7 +216,15 @@ animation: moveToBottom .5s;
   border: 1px solid #fff;
   box-shadow: 0px 10px 25px rgba(0,0,0,0.45);
   border-radius: 5px;
+  transition: .4s;
   overflow: hidden;
+  
+  @media screen and (max-width: 512px) {
+    right: 30px;
+    top: 15%;
+    bottom: 15%;
+    left: 30px;
+  }
 
   :before {
     content: '';
@@ -231,27 +260,52 @@ animation: moveToBottom .5s;
 
   .__drinkName {
       position: relative;
-      top: 20%;
+      top: 10%;
       left: 10%;
       width: 300px;
       font-size: 48px;
       font-weight: 100;
       letter-spacing: 10px;
+      text-shadow: 1px 1px #ddd;
+      
   }
 
   .__ingredients {
     position: absolute;
     font-size: 20px;
     background: rgba(255, 255, 255, 0.3);
-    border: 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     text-align: center;
     padding: 15px;
     right: 10%;
     top: 10%;
     bottom: 10%;
-    left: 60%;
+    width: 215px;
     letter-spacing: 4px;
+    text-shadow: -1px 1px #ddd;
+    transition: .4s;
+
+    @media screen and (max-width: 376px) {
+      top: 50%;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      height: auto;
+      padding: 0;
+      width: 85%;
+
+      li {
+        padding-top: 0px;
+      }
+    }
+
+    h1 {
+      position: relative;
+      top: 0;
+      left: 0;
+      font-size: 20px;
+    }
 
     li {
       padding-top: 35px;
@@ -259,6 +313,10 @@ animation: moveToBottom .5s;
       list-style: none;
       font-size: 24px;
       font-style: italic;
+
+      @media screen and (max-width: 376px) {
+        padding-top: 7px;
+      }
     }
   }
 }
@@ -293,8 +351,8 @@ div {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: 370px;
-  height: 150px;
+  width: 340px;
+  height: 170px;
   border: 1px solid #fff;
   box-shadow: 0px 10px 25px rgba(0,0,0,0.45);
   border-radius: 5px;
@@ -308,6 +366,7 @@ div {
     width: 20px;
     height: 20px;
     text-align: center;
+    font-weight: bolder;
     margin: 10px;
     padding: 2.5px;
     box-shadow: 0px 10px 15px rgba(0,0,0,0.25);
@@ -358,4 +417,172 @@ div {
       box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
     }
   }
+}`
+
+export const ModalEdit = styled.div`
+position: fixed;
+top: 0%;
+left: 0%;
+right: 0%;
+bottom: 0%;
+background: linear-gradient(45deg, rgba(0,0,0,.75), rgba(256,256,256,.75));
+transform: translateY(0px);
+animation: moveToBottom .5s;
+
+@keyframes moveToBottom {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+div {
+  background: linear-gradient(-45deg, #FDCB9E, #FDCBfE);
+  position: fixed;
+  display: relative;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 340px;
+  height: 520px;
+  border: 1px solid #fff;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.45);
+  border-radius: 5px;
+  /* overflow: hidden; */
+
+  .__close {
+    background: #555;
+    color: white;
+    position: absolute;
+    right: 0%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-weight: bolder;
+    margin: 10px;
+    padding: 2.5px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.25);
+    transition: .4s;
+    cursor: pointer;
+
+    :hover {
+      background: white;
+      color: black;
+      box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+    }
+  }
+
+  p {
+    flex: 1;
+    color: black;
+    width: 100%;
+    padding: 25px;
+    padding-bottom: 10px;
+    font-weight: bolder;
+  }
+
+  form {
+    margin: 0   20px;
+    border: 0;
+
+    input {
+      display: block;
+      margin: 20px 0;
+      width: 100%;
+      border: 0px;
+      border-radius: 2.5px;
+      padding: 10px;
+
+      ::placeholder {
+        color: #cacaca;
+      }
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 20px;
+      border: 0px;
+      border-radius: 2.5px;
+      padding: 10px;
+
+      ::placeholder {
+        color: #cacaca;
+      }
+    }
+
+    ul {
+      flex: 1;
+      list-style: none;
+      display: flex;
+      color: white;
+      width: 100%;
+    }
+
+    li {
+      display: inline-block;
+      padding: 0 25px;
+    }
+
+    label {
+      color: #555;
+
+      .__toogle {
+        display: relative;
+        top: 425px;
+        left: 180px;
+        width: 30px;
+        height: 20px;
+        border: 0;
+        border-radius: 30px;
+        background: #cacaca;
+        box-shadow: none;
+        transition: .2s ease-in-out;
+
+        .__circle {
+          left: 10px;
+          background: #fff;
+          border-radius: 50%;
+          width: 15px;
+          height: 15px;
+          transition: .2s ease-in-out;
+        }
+
+        :active {
+          background: #555;
+          transition: .2s ease-in-out;
+
+          .__circle{
+            margin-left: 9px;
+            transition: .2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    button {
+      margin: 30px 0;
+      padding: 10px 25px ;
+      border: 0;
+      border-radius: 5px;
+      background: #555;
+      color: white;
+      box-shadow: 0px 10px 15px rgba(0,0,0,0.25);
+      transition: .4s;
+      cursor: pointer;
+
+      :hover {
+        background: white;
+        color: black;
+        box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+      }
+    }
+  }  
 }`
