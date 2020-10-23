@@ -3,7 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
   font-family: "Roboto", sans-serif;
   display: flex;
-  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
 
   .__voltar {
     position: absolute;
@@ -17,7 +23,7 @@ export const Container = styled.div`
     z-index: 1;
 
     :hover svg {
-      transform: translateX(-5px) rotate(-45deg) scale(1.3);
+      transform: translateX(-10px) rotate(-45deg) scale(1.3);
     }
   }
 
@@ -28,7 +34,7 @@ export const Container = styled.div`
   }
 
   svg {
-    margin-right: 15px;
+    margin-right: 5px;
     color: black;
     font-size: 25px;
     vertical-align: middle;
@@ -38,10 +44,14 @@ export const Container = styled.div`
   .showDrinks {
     text-align: left;
     position: relative;
-    padding: 0;
-    margin: 0 6%;
+    padding: 0 5%;
+    margin: 0;
     top: 100px;
     width: 100vw;
+
+    @media screen and (max-width: 812px) {
+        padding: 0;
+    }
 
     div {
       cursor: pointer;
@@ -59,7 +69,7 @@ export const Container = styled.div`
       transition: .4s ease-in-out;
 
       @media screen and (max-width: 812px) {
-        margin: 80px 42px;
+        margin: 80px 60px;
       }
 
       :hover {
@@ -97,7 +107,6 @@ export const Container = styled.div`
         position: absolute;
         background: transparent;
         top: 105%;
-        left: 0;
         font-style: normal;
         font-weight: 300;
         font-size: 36px;
@@ -106,7 +115,7 @@ export const Container = styled.div`
 
       .__delete {
         position: absolute;
-        right: -60px;
+        right: -50px;
         top: 40%;
         transform: translateY(-40%);
         cursor: pointer;
@@ -118,7 +127,7 @@ export const Container = styled.div`
 
       .__update {
         position: absolute;
-        right: -60px;
+        right: -50px;
         top: 60%;
         transform: translateY(-60%);
         cursor: pointer;
@@ -150,10 +159,6 @@ export const Container = styled.div`
         top: 150%;
         transform: translateX(-50%);
       }
-
-      :hover {
-        filter: invert(1);
-      }
     }
 
     div:last-child:before {
@@ -170,6 +175,10 @@ export const Container = styled.div`
       top: 50%;
       transform: translateY(-50%);
       right: -90%;
+
+      :hover {
+        filter: invert(1);
+      }
 
       @media screen and (max-width: 502px) {
         right: 0;
@@ -282,18 +291,18 @@ z-index: 2;
     top: 10%;
     bottom: 10%;
     width: 215px;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-shadow: -1px 1px #ddd;
     transition: .4s;
 
-    @media screen and (max-width: 376px) {
+    @media screen and (max-width: 813px) {
       top: 50%;
       right: 20px;
       bottom: 20px;
       left: 20px;
       height: auto;
       padding: 0;
-      width: 85%;
+      width: 90%;
 
       li {
         padding-top: 0px;
@@ -302,20 +311,24 @@ z-index: 2;
 
     h1 {
       position: relative;
-      top: 0;
+      top: 10px;
       left: 0;
       font-size: 20px;
+      text-decoration: underline;
     }
 
     li {
-      padding-top: 35px;
       position: relative;
+      padding-top: 35px;
       list-style: none;
       font-size: 24px;
       font-style: italic;
 
-      @media screen and (max-width: 376px) {
-        padding-top: 7px;
+      @media screen and (max-width: 813px) {
+        text-align: center;
+        padding: 7px;
+        margin-right: 15px;
+        display: inline-block;
       }
     }
   }
@@ -331,6 +344,7 @@ bottom: 0%;
 background: linear-gradient(45deg, rgba(0,0,0,.75), rgba(256,256,256,.75));
 transform: translateY(0px);
 animation: moveToBottom .5s;
+z-index: 3;
 
 @keyframes moveToBottom {
   from {
@@ -352,7 +366,7 @@ div {
   left: 50%;
   transform: translate(-50%,-50%);
   width: 340px;
-  height: 170px;
+  height: 420px;
   border: 1px solid #fff;
   box-shadow: 0px 10px 25px rgba(0,0,0,0.45);
   border-radius: 5px;
@@ -369,6 +383,8 @@ div {
     font-weight: bolder;
     margin: 10px;
     padding: 2.5px;
+    border: 0;
+    border-radius: 5px;
     box-shadow: 0px 10px 15px rgba(0,0,0,0.25);
     transition: .4s;
     cursor: pointer;
@@ -385,7 +401,14 @@ div {
     color: black;
     width: 100%;
     padding: 25px;
-    font-weight: bolder;
+    padding-top: 30px;
+  }
+
+  .__openImg {
+    background-size: cover;
+    border: 0px;
+    width: 250px;
+    height: 250px;
   }
 
   ul {
@@ -401,8 +424,11 @@ div {
     padding: 0 25px;
   }
 
-  button {
-    padding: 10px 25px ;
+  .__btnYN {
+    position: relative;
+    left: 50%;
+    padding: 10px 27.5px ;
+    margin: 270px 0;
     border: 0;
     border-radius: 5px;
     background: #555;
@@ -428,6 +454,7 @@ bottom: 0%;
 background: linear-gradient(45deg, rgba(0,0,0,.75), rgba(256,256,256,.75));
 transform: translateY(0px);
 animation: moveToBottom .5s;
+z-index: 4;
 
 @keyframes moveToBottom {
   from {
@@ -505,7 +532,11 @@ div {
       }
     }
 
-    textarea {
+    .inputToPrice::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    .inputToIngredients {
       width: 100%;
       height: 150px;
       margin-bottom: 20px;
@@ -536,7 +567,180 @@ div {
 
       .__toogle {
         display: relative;
-        top: 425px;
+        top: 420px;
+        left: 180px;
+        width: 30px;
+        height: 20px;
+        border: 0;
+        border-radius: 30px;
+        background: #cacaca;
+        box-shadow: none;
+        transition: .2s ease-in-out;
+
+        .__circle {
+          left: 10px;
+          background: #fff;
+          border-radius: 50%;
+          width: 15px;
+          height: 15px;
+          transition: .2s ease-in-out;
+        }
+
+        :active {
+          background: #555;
+          transition: .2s ease-in-out;
+
+          .__circle{
+            margin-left: 9px;
+            transition: .2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    button {
+      margin: 30px 0;
+      padding: 10px 25px ;
+      border: 0;
+      border-radius: 5px;
+      background: #555;
+      color: white;
+      box-shadow: 0px 10px 15px rgba(0,0,0,0.25);
+      transition: .4s;
+      cursor: pointer;
+
+      :hover {
+        background: white;
+        color: black;
+        box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+      }
+    }
+  }  
+}`
+
+export const ModalAdd = styled.div`
+position: fixed;
+top: 0%;
+left: 0%;
+right: 0%;
+bottom: 0%;
+background: linear-gradient(45deg, rgba(0,0,0,.75), rgba(256,256,256,.75));
+transform: translateY(0px);
+animation: moveToBottom .5s;
+z-index: 4;
+
+@keyframes moveToBottom {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+div {
+  background: linear-gradient(-45deg, #FDCB9E, #FDCBfE);
+  position: fixed;
+  display: relative;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 340px;
+  height: 520px;
+  border: 1px solid #fff;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.45);
+  border-radius: 5px;
+  /* overflow: hidden; */
+
+  .__close {
+    background: #555;
+    color: white;
+    position: absolute;
+    right: 0%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-weight: bolder;
+    margin: 10px;
+    padding: 2.5px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.25);
+    transition: .4s;
+    cursor: pointer;
+
+    :hover {
+      background: white;
+      color: black;
+      box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+    }
+  }
+
+  p {
+    flex: 1;
+    color: black;
+    width: 100%;
+    padding: 25px;
+    padding-bottom: 10px;
+    font-weight: bolder;
+  }
+
+  form {
+    margin: 0   20px;
+    border: 0;
+
+    input {
+      display: block;
+      margin: 20px 0;
+      width: 100%;
+      border: 0px;
+      border-radius: 2.5px;
+      padding: 10px;
+
+      ::placeholder {
+        color: #cacaca;
+      }
+    }
+
+    .inputToPrice::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    .inputToIngredients {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 20px;
+      border: 0px;
+      border-radius: 2.5px;
+      padding: 10px;
+
+      ::placeholder {
+        color: #cacaca;
+      }
+    }
+
+    ul {
+      flex: 1;
+      list-style: none;
+      display: flex;
+      color: white;
+      width: 100%;
+    }
+
+    li {
+      display: inline-block;
+      padding: 0 25px;
+    }
+
+    label {
+      color: #555;
+
+      .__toogle {
+        display: relative;
+        top: 420px;
         left: 180px;
         width: 30px;
         height: 20px;
