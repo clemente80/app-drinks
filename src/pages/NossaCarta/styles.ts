@@ -64,7 +64,6 @@ export const Container = styled.div`
       background-size: cover;
       list-style: none;
       text-decoration: none;
-      text-transform: uppercase;
       border-radius: 8px;
       transition: .4s ease-in-out;
 
@@ -86,12 +85,12 @@ export const Container = styled.div`
 
         :hover {
           box-shadow: -10px 10px 15px rgba(25, 25, 25, 0.5);
+          transform: scale(1);
         }
       }
 
       img {
         position: absolute;
-        background: beige;
         border-radius: 8px;
         border: 0px;
         width: 100%;
@@ -110,7 +109,12 @@ export const Container = styled.div`
         font-style: normal;
         font-weight: 300;
         font-size: 36px;
-        text-transform: capitalize;
+        text-transform: initial;
+      }
+
+      button {
+        border: 0px;
+        cursor: pointer;
       }
 
       .__delete {
@@ -118,7 +122,6 @@ export const Container = styled.div`
         right: -50px;
         top: 40%;
         transform: translateY(-40%);
-        cursor: pointer;
 
         :hover {
           filter: invert(1);
@@ -130,15 +133,51 @@ export const Container = styled.div`
         right: -50px;
         top: 60%;
         transform: translateY(-60%);
-        cursor: pointer;
 
         :hover {
           filter: invert(1);
         }
       }
+
+      .__tag {
+      position: absolute;
+      background: transparent;
+      background-size: cover;
+      top: -97px;
+      left: -89px;
+      width: 150px;
+      height: 150px;
+      border-radius: 0px;
+      filter: drop-shadow(7px 7px 5px rgba(40,40,40,.7));
+      cursor: default;
+
+      :hover {
+        top: -100px;
+        left: -91px;
+      }
+
+      :after {
+        content: "Drink da Semana";
+        white-space: pre-wrap;
+        position: absolute;
+        font-size: 16px;
+        color: rgba(256,256,256,.75);
+        transform: rotate(-45deg);
+        font-weight: bolder;
+        width: 75px;
+        top: 26px;
+        left: 11px;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 812px) {
+          left: -79px;
+      }
+    }
     }
     
-    div:last-child:after {
+    
+    /* div:last-child:after {
       content: 'novo drink';
       font-size: 27px;
       text-align: center;
@@ -147,6 +186,7 @@ export const Container = styled.div`
       position: absolute;
       width: 125px;
       height: 125px;
+      margin-bottom: 300px;
       border: 2px solid;
       border-radius: 50%;
       top: 50%;
@@ -186,6 +226,31 @@ export const Container = styled.div`
         top: 150%;
         transform: translateX(-50%);
       }
+    } */
+
+      .__newDrink {
+      font-family: Roboto, sans-serif;
+      background: transparent;
+      position: relative;
+      left: 140px;
+      width: 125px;
+      height: 125px;     
+      margin-top: 50px; 
+      border: 1px solid black;
+      border-radius: 50%;
+      font-size: 80px;
+      font-weight: 100;
+      cursor: pointer;
+      transition: .4s ease-in-out;
+
+      :hover {
+        transform: scale(1.1) rotate(90deg);
+        border: 1.5px solid black;
+      }
+
+      @media screen and (max-width: 376px) {
+        top: 100px;
+      }
     }
   }
 `
@@ -197,6 +262,7 @@ left: 0%;
 right: 0%;
 bottom: 0%;
 background: linear-gradient(45deg, rgba(0,0,0,.75), rgba(256,256,256,.75));
+backdrop-filter: blur(5px);
 transform: translateY(0px);
 animation: moveToBottom .5s;
 z-index: 2;
@@ -226,7 +292,7 @@ z-index: 2;
   box-shadow: 0px 10px 25px rgba(0,0,0,0.45);
   border-radius: 5px;
   transition: .4s;
-  overflow: hidden;
+  /* overflow: hidden; */
   
   @media screen and (max-width: 512px) {
     right: 30px;
@@ -267,6 +333,36 @@ z-index: 2;
     }
   }
 
+  .__tag {
+    position: absolute;
+    background: transparent;
+    background-size: cover;
+    top: -31px;
+    left: -33px;
+    width: 250px;
+    height: 250px;
+    border-radius: 0px;
+    filter: drop-shadow(7px 7px 5px rgba(40,40,40,.5));
+
+    :after {
+      content: "Drink da Semana";
+      white-space: pre-wrap;
+      position: absolute;
+      font-size: 28px;
+      color: rgba(256,256,256,.75);
+      transform: rotate(-45deg);
+      font-weight: bolder;
+      width: 125px;
+      top: 40px;
+      left: 20px;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 812px) {
+        left: -79px;
+    }
+  }
+
   .__drinkName {
       position: relative;
       top: 10%;
@@ -283,6 +379,7 @@ z-index: 2;
     position: absolute;
     font-size: 20px;
     background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     text-align: center;
@@ -323,6 +420,7 @@ z-index: 2;
       list-style: none;
       font-size: 24px;
       font-style: italic;
+      text-transform: lowercase;
 
       @media screen and (max-width: 813px) {
         text-align: center;
@@ -332,6 +430,16 @@ z-index: 2;
       }
     }
   }
+  .__price {
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      width: 400px;
+      font-size: 80px;
+      font-style: italic;
+      font-weight: 100;
+      color: rgba(256,256,256,.7);
+    }
 }
 `
 
@@ -342,6 +450,7 @@ left: 0%;
 right: 0%;
 bottom: 0%;
 background: linear-gradient(45deg, rgba(0,0,0,.75), rgba(256,256,256,.75));
+backdrop-filter: blur(5px);
 transform: translateY(0px);
 animation: moveToBottom .5s;
 z-index: 3;
@@ -452,6 +561,7 @@ left: 0%;
 right: 0%;
 bottom: 0%;
 background: linear-gradient(45deg, rgba(0,0,0,.75), rgba(256,256,256,.75));
+backdrop-filter: blur(5px);
 transform: translateY(0px);
 animation: moveToBottom .5s;
 z-index: 4;
@@ -526,7 +636,8 @@ div {
       border: 0px;
       border-radius: 2.5px;
       padding: 10px;
-
+      box-shadow: -4px 4px 5px rgba(0,0,0,0.25);
+      
       ::placeholder {
         color: #cacaca;
       }
@@ -542,7 +653,8 @@ div {
       margin-bottom: 20px;
       border: 0px;
       border-radius: 2.5px;
-      padding: 10px;
+      padding: 10px;      
+      box-shadow: -4px 4px 5px rgba(0,0,0,0.25);
 
       ::placeholder {
         color: #cacaca;
@@ -562,44 +674,49 @@ div {
       padding: 0 25px;
     }
 
-    label {
-      color: #555;
+    .labelDrink {
+      font-size: 14px;
+      padding-left: 10px;
+    }
 
-      .__toogle {
-        display: relative;
-        top: 420px;
-        left: 180px;
-        width: 30px;
-        height: 20px;
-        border: 0;
-        border-radius: 30px;
-        background: #cacaca;
-        box-shadow: none;
+    input[type=checkbox] {
+        visibility: hidden;
+    }
+
+    .checkboxForEdit {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      top: -30px;
+      background: #fff;
+      margin: 20px 10px;
+      border: 0;
+      border-radius: 30px;
+      transition: 1s ease-in-out;
+      box-shadow: -4px 4px 5px rgba(0,0,0,0.25);
+
+      input[type=checkbox]:checked + label {
+        left: 22px;
+      }
+
+      label {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        transition: all .5s ease;
+        cursor: pointer;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        background: #555;
         transition: .2s ease-in-out;
-
-        .__circle {
-          left: 10px;
-          background: #fff;
-          border-radius: 50%;
-          width: 15px;
-          height: 15px;
-          transition: .2s ease-in-out;
-        }
-
-        :active {
-          background: #555;
-          transition: .2s ease-in-out;
-
-          .__circle{
-            margin-left: 9px;
-            transition: .2s ease-in-out;
-          }
-        }
       }
     }
 
     button {
-      margin: 30px 0;
+      position: relative;
+      top: -30px;
       padding: 10px 25px ;
       border: 0;
       border-radius: 5px;
@@ -625,6 +742,7 @@ left: 0%;
 right: 0%;
 bottom: 0%;
 background: linear-gradient(45deg, rgba(0,0,0,.75), rgba(256,256,256,.75));
+backdrop-filter: blur(5px);
 transform: translateY(0px);
 animation: moveToBottom .5s;
 z-index: 4;
@@ -735,44 +853,49 @@ div {
       padding: 0 25px;
     }
 
-    label {
-      color: #555;
+    .labelDrink {
+      font-size: 14px;
+      padding-left: 10px;
+    }
 
-      .__toogle {
-        display: relative;
-        top: 420px;
-        left: 180px;
-        width: 30px;
-        height: 20px;
-        border: 0;
-        border-radius: 30px;
-        background: #cacaca;
-        box-shadow: none;
+    input[type=checkbox] {
+        visibility: hidden;
+    }
+
+    .checkboxForAdd {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      top: -30px;
+      background: #fff;
+      margin: 20px 10px;
+      border: 0;
+      border-radius: 30px;
+      transition: 1s ease-in-out;
+      box-shadow: -4px 4px 5px rgba(0,0,0,0.25);
+
+      input[type=checkbox]:checked + label {
+        left: 22px;
+      }
+
+      label {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        transition: all .5s ease;
+        cursor: pointer;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        background: #555;
         transition: .2s ease-in-out;
-
-        .__circle {
-          left: 10px;
-          background: #fff;
-          border-radius: 50%;
-          width: 15px;
-          height: 15px;
-          transition: .2s ease-in-out;
-        }
-
-        :active {
-          background: #555;
-          transition: .2s ease-in-out;
-
-          .__circle{
-            margin-left: 9px;
-            transition: .2s ease-in-out;
-          }
-        }
       }
     }
 
     button {
-      margin: 30px 0;
+      position: relative;
+      top: -30px;
       padding: 10px 25px ;
       border: 0;
       border-radius: 5px;

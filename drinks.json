@@ -1,71 +1,10 @@
 {
   "drinks": [
     {
-      "drink_name": "Williane",
-      "url_img": "https://www.onemoregift.co.uk/wp-content/uploads/2014/11/whisky-1284.jpg",
-      "price": "50",
-      "ingredients": [
-        "limão, whisky, soda, gin"
-      ],
-      "id": 1
-    },
-    {
-      "id": 2,
-      "drink_name": "Caipirinha de Limão",
-      "price": 18,
-      "week-drink": false,
-      "ingredients": [
-        "cachaça",
-        "açúcar",
-        "limão",
-        "gelo"
-      ],
-      "url_img": "https://i.ibb.co/nPCtYbm/sagatiba.jpg"
-    },
-    {
-      "id": 3,
-      "drink_name": "White Russian",
-      "price": 18,
-      "week-drink": false,
-      "ingredients": [
-        "vodka",
-        "licor de café",
-        "creme de leite",
-        "gelo"
-      ],
-      "url_img": "https://i.ibb.co/KFZBMMP/white-russian.jpg"
-    },
-    {
-      "id": 4,
-      "price": 20,
-      "week-drink": false,
-      "drink_name": "Gin Tônica",
-      "ingredients": [
-        "gin",
-        "agua tônica",
-        "laranja",
-        "gelo"
-      ],
-      "url_img": "https://i.ibb.co/wyDxhPj/gin-tonic.jpg"
-    },
-    {
-      "id": 5,
-      "drink_name": "Cosmopolitan",
-      "price": 22,
-      "week-drink": false,
-      "ingredients": [
-        "vodka citron",
-        "cointreau",
-        "suco de limão",
-        "suco de cranberry"
-      ],
-      "url_img": "http://dailyappetite.com/wp-content/uploads/2017/05/cosmo-1.jpg"
-    },
-    {
-      "id": 6,
-      "drink_name": "Mojito",
+      "drink_name": "Moscow Mule",
+      "url_img": "https://cookinglsl.com/wp-content/uploads/2015/08/moscow-mule-edited-1-1.jpg",
       "price": 24,
-      "week-drink": true,
+      "week_drink": true,
       "ingredients": [
         "vodka",
         "hortelã",
@@ -74,7 +13,100 @@
         "limão",
         "espuma de gengibre"
       ],
-      "url_img": "https://foodwithfeeling.com/wp-content/uploads/2020/04/classic-mojito-5.jpg"
+      "id": 1
+    },
+    {
+      "drink_name": "Caipirinha de Limão",
+      "url_img": "https://www.mommymusings.com/wp-content/uploads/2013/04/darkandstormydrink.jpg",
+      "price": 18,
+      "week_drink": false,
+      "ingredients": [
+        "cachaça",
+        "açúcar",
+        "limão",
+        "gelo"
+      ],
+      "id": 2
+    },
+    {
+      "drink_name": "White Russian",
+      "url_img": "https://i.ibb.co/KFZBMMP/white-russian.jpg",
+      "price": 18,
+      "week_drink": true,
+      "ingredients": [
+        "vodka",
+        "licor de café",
+        "creme de leite",
+        "gelo"
+      ],
+      "id": 3
+    },
+    {
+      "drink_name": "Gin Tônica",
+      "url_img": "https://i.ibb.co/wyDxhPj/gin-tonic.jpg",
+      "price": 20,
+      "week_drink": false,
+      "ingredients": [
+        "gin",
+        "agua tônica",
+        "laranja",
+        "gelo"
+      ],
+      "id": 4
+    },
+    {
+      "drink_name": "Cosmopolitan",
+      "url_img": "http://dailyappetite.com/wp-content/uploads/2017/05/cosmo-1.jpg",
+      "price": 22,
+      "week_drink": false,
+      "ingredients": [
+        "vodka citron",
+        "cointreau",
+        "suco de limão",
+        "suco de cranberry"
+      ],
+      "id": 5
+    },
+    {
+      "drink_name": "Mojito",
+      "url_img": "https://foodwithfeeling.com/wp-content/uploads/2020/04/classic-mojito-5.jpg",
+      "price": 24,
+      "week_drink": false,
+      "ingredients": [
+        "vodka",
+        "hortelã",
+        "açúcar",
+        "gelo batido",
+        "limão",
+        "espuma de gengibre"
+      ],
+      "id": 6
+    },
+    {
+      "drink_name": "Manhattan Cocktail",
+      "url_img": "https://pixfeeds.com/images/40/593863/1280-161932819-manhattan-cocktail.jpg",
+      "price": 35,
+      "week_drink": false,
+      "ingredients": [
+        "¾ oz. Sweet vermouth",
+        "2.5 oz. Bourbon whiskey",
+        "1 dash Bitters",
+        "1 Maraschino cherry",
+        "1 Orange peel"
+      ],
+      "id": 7
+    },
+    {
+      "drink_name": "Grape Cocktail",
+      "url_img": "https://theviewfromgreatisland.com/wp-content/uploads/2014/08/1-DSC_01521.jpg",
+      "price": "40",
+      "week_drink": false,
+      "ingredients": [
+        "1 Lb Fresh Concord Grapes or Another Black Grape",
+        "1/2 cup water",
+        "Juice of 1/2 Lemmon"
+      ],
+      "id": 8
     }
   ]
 }

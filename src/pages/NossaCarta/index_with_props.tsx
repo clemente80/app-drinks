@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom'
-import { Container, ModalTrash, ModalDetails, ModalEdit, ModalAdd } from './styles';
+import { Container, ModalTrash, ModalDetails, ModalAdd } from './styles';
+import ModalEdit from '../../components/Modal_Edit/modalEdit';
 
 import { TiArrowBack } from 'react-icons/ti';
 import { FiTrash } from 'react-icons/fi';
 import { HiOutlinePencil } from 'react-icons/hi';
-import tagSpot from '../../assets/tag2.png'
 
 import api from '../../services/api';
-// import DrinkSemanaPages from '../DrinkSemana';
-// import { url } from 'inspector';
+import DrinkSemanaPages from '../DrinkSemana';
+import { url } from 'inspector';
 
 interface drinkData{
   id: number,
@@ -27,37 +27,36 @@ const NossaCartaPages: React.FC = () => {
   const [modalDetails, setModalDetails] = useState(false);
   const [modalTrash, setModalTrash] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
-  const [modalEditConfirmed, setModalEditConfirmed] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
 
   const [drink_name, setDrink_name] = useState();
   const [url_img, setUrImg] = useState();
   const [price, setPrice] = useState();
   const [ingredients, setIngredients] = useState();
-  const [week_drink, setWeekDrink] = useState(false);
+  const [week_drink, setWeekDrink] = useState(Boolean);
  
   useEffect(()  => {
     api.get('/drinks')
     .then((response) => {
+      console.log(response.data)
       setDrinkData(response.data)
     })
     .catch(err => console.log(err))
   }, [])
 
   const openDrinkDetails = useCallback((drink) => {
-    setModalDetails(true)
+    setModalDetails(true);
     setDrinkInfo(drink)
    },[setDrinkInfo])
 
   const openDeleteModal = useCallback((drink) => {
-    setModalTrash(true)
+    setModalTrash(true);
     setDrinkInfo(drink)
   },[setDrinkInfo])
 
   const openUpdateModal = useCallback((drink) => {
-    setModalEdit(true)
+    setModalEdit(true);
     setDrinkInfo(drink)
-    // setWeekDrink(drink.week_drink)
   },[setDrinkInfo])
 
   function openAddModal() {
@@ -75,24 +74,23 @@ const NossaCartaPages: React.FC = () => {
       .catch(err => console.log(err))
   }
 
-  async function updateDrink(drink:any) {
-    await api.put(`drinks/${drink.id}`, {
-      drink_name: drink_name === undefined ? drink.drink_name : drink_name,
-      url_img: url_img === undefined ? drink.url_img : url_img,
-      price: price === undefined ? drink.price : price,
-      week_drink: week_drink === undefined ? drink.week_drink : week_drink,
-      ingredients: ingredients === undefined ? drink.ingredients : ingredients,
-    })
-      .then((response) => {
-        setModalEdit(false);
-        // setModalEditConfirmed(true);
-        let updatedDrinkData = drinkData.filter((drinks) => drinks.id != drink.id);
-        setDrinkData(updatedDrinkData);
-      })
-      .catch(err => console.log(err))
-  }
-
   async function addDrink() {
+    // let strComma = ingredients
+    // let b = strComma.split(',')
+    // let c = ''
+    // console.log(strComma, b, c)
+
+    // for (var i=0; i<b.length; b++) {
+    //   c.concat("\'").concat(b[i]).concat("\',\"")
+    //   console.log(b)
+    // }
+
+    // let strComma = ingredients
+    // // let replaceComma = strComma.split(',').map(function (str:String) {
+    // //   return '"' +str+ '"';
+    // // });
+    // let c = replaceComma(" \g ",)
+
     await api.post(`drinks`, {
       drink_name,
       url_img,
@@ -102,13 +100,15 @@ const NossaCartaPages: React.FC = () => {
     })
       .then((response) => {
         console.log(response);
+        // setModalAdd(false);
+        // let adddDrinkData = drinkData.filter((drinks) => drinks);
+        // setDrinkData(adddDrinkData);
       })
       .catch(err => console.log(err))
   }
   
   return (
     <Container>
-
       <button className='__voltar'>
         <TiArrowBack />
         <Link to="/main" id="link-home">Voltar</Link>
@@ -126,27 +126,24 @@ const NossaCartaPages: React.FC = () => {
               <h4>{drink.drink_name}</h4>
               <button title='Deletar' onClick={() => openDeleteModal(drink)}><FiTrash className='__delete'/></button>
               <button title='Editar' onClick={() => openUpdateModal(drink)}><HiOutlinePencil className='__update'/></button>
-              <div className='__tag'style={{backgroundImage: `url(${tagSpot})`, opacity: drink.week_drink ? 1 : 0}}> </div>
             </div>
           ))}
-          <button className='__newDrink' title='Adicionar uma bebida' onClick={openAddModal} style={{top: `${drinkInfo?.id} === '7'`?'0px':'100px', marginBottom: '150px'}}>+</button>
+          <button className='__newDrink' title='Adicionar uma bebida' onClick={openAddModal}>+</button>
       </div>
 
       {modalDetails &&
        <ModalDetails>
         <div className='__details' style={{ backgroundImage: `url(${drinkInfo?.url_img})`}}>
           <button className='__close' title='Fechar' onClick={() => setModalDetails(false)}>&times;</button>
-          <div className='__tag' style={{backgroundImage: `url(${tagSpot})`, opacity: drinkInfo?.week_drink ? 1 : 0}}> </div>
           <p className='__drinkName'>{drinkInfo?.drink_name}</p>
-          <div className='__ingredients'>
-            <h1>INGREDIENTES</h1>
-            <ul>
-              {drinkInfo?.ingredients.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <p className='__price'>R$ {drinkInfo?.price},&#8304;&#8304; </p>
+              <div className='__ingredients'>
+              <h1>INGREDIENTES</h1>
+              <ul>
+                {drinkInfo?.ingredients.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              </div>
         </div>
        </ModalDetails>
       }
@@ -166,57 +163,8 @@ const NossaCartaPages: React.FC = () => {
       }
 
       {modalEdit &&
-       <ModalEdit>
-        <div key={drinkInfo?.id}>
-          <button className='__close' title='Fechar' onClick={() => setModalEdit(false)}>&times;</button>
-          <p>Alteração de itens de bebida</p>
-          <form>
-            <input type='text' placeholder={drinkInfo?.drink_name} onChange={(e:any) => setDrink_name(e.target.value)}></input>
-            <input type='url' placeholder={drinkInfo?.url_img} onChange={(e:any) => setUrImg(e.target.value)}></input>
-            <input className='inputToPrice' placeholder={drinkInfo?.price.toString()} onChange={(e:any) => setPrice(e.target.value)}></input>
-            <textarea className='inputToIngredients' placeholder={drinkInfo?.ingredients.toString()} onChange={(e:any) => {
-                let ingredientsArray = e.target.value.split(',')
-                let splitTrim = ingredientsArray.map((s:any) => s.trim())
-                setIngredients(splitTrim)
-              }}>
-            </textarea>
-            <label className='labelDrink'>Drink da Semana?</label>
-            <section>
-              <div className='checkboxForEdit'>
-                <input type='checkbox' id='checkboxOneInput' onChange={(e:any) => {
-                  // console.log('Atual:' + e.target.value)
-                  if(e.target.value === "on"){
-                    e.target.value = "off"
-                    setWeekDrink(true)
-                  }else if(e.target.value === "off"){
-                    e.target.value = "on"
-                    setWeekDrink(false)
-                  }
-                  // console.log(e.target.value, drinkInfo?.drink_name, week_drink)
-                }}/>
-                {/* <label htmlFor='checkboxOneInput' style={{left: `${drinkInfo?.week_drink}`? '22px':'0px'}} /> */}
-                <label htmlFor='checkboxOneInput'/>
-              </div>
-            </section>
-            <ul>
-              <li><button onClick={() => updateDrink(drinkInfo)}>Alterar</button></li>
-              <li><button onClick={() => setModalEdit(false)}>Cancelar</button></li>
-            </ul>
-          </form>
-        </div>
-       </ModalEdit>
+       <ModalEdit item={drinkInfo?.id} setModal={setModalEdit} />
       }
-
-      {/* {modalEditConfirmed &&
-       <ModalEditConfirmed>
-        <div key={drinkInfo?.id}>
-          <button className='__close' title='Fechar' onClick={() => setModalEdit(false)}>&times;</button>
-          <img></img>
-          <p>Drink da <strong>{drinkInfo?.drink_name}</strong> foi sido deletado com sucesso!</p>
-          <button>Ok</button>
-        </div>
-       </ModalEditConfirmed>
-      } */}
 
       {modalAdd &&
        <ModalAdd>
@@ -234,19 +182,13 @@ const NossaCartaPages: React.FC = () => {
               }}>
             </textarea>
             <label className='labelDrink'>Drink da Semana?</label>
-            <div className='checkboxForAdd'>
-                <input type='checkbox' id='checkboxOneInput' onChange={(e:any) => {
-                  // console.log('Atual:' + e.target.value)
-                  if(e.target.value === "on"){
-                    e.target.value = "off"
-                    setWeekDrink(true)
-                  }else if(e.target.value === "off"){
-                    e.target.value = "on"
-                    setWeekDrink(false)
-                  }
+            <section>
+            <input type='checkbox' value='true' id='checkboxOneInput' onChange={(e:any) => {
+                  setWeekDrink(e.target.value)
+                  console.log(setWeekDrink)
                 }}/>
                 <label htmlFor='checkboxOneInput' />
-            </div>
+            </section>
             <ul>
               <li><button onClick={addDrink}>Acidionar</button></li>
               <li><button onClick={() => setModalAdd(false)}>Cancelar</button></li>
